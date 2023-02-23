@@ -1,7 +1,7 @@
 Given the server is started
 
 When the grid is displayed,
-Then the Soduku grid is valid, and there is no duplicate number within any square, inside any row, or inside any column
+Then the Sudoku grid is valid, and there is no duplicate number within any square, inside any row, or inside any column
 
 When I click on "New Game"
 Then A new, valid, Sudoku grid is displayed
