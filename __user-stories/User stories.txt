@@ -1,0 +1,35 @@
+Given the server is started
+
+When the grid is displayed,
+Then the Soduku grid is valid, and there is no duplicate number within any square, inside any row, or inside any column
+
+When I click on "New Game"
+Then A new, valid, Sudoku grid is displayed
+
+When the page is launched
+Then the default level is "Easy".
+
+When I click on the level "Easy"
+Then I can access the levels "Medium" and "Hard".
+
+When clicking on an empty Sudoku square,
+and When clicking on a number on the number pad,
+Then the number appears in the empty square
+
+When clicking on the word "Erase" or on the "X",
+Then the last entry is being erased.
+
+When clicking on the word "Undo" or on the nearby icon
+Then the previous choice is being undone,
+and this up to the first move done during the game.
+
+Given an empty square has been pressed,
+When clicking on the word "Hint" or on the nearby icon,
+Then the correct value appears on the grid.
+
+
+
+
+
+
+
