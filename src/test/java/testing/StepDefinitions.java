@@ -4,18 +4,22 @@ import io.cucumber.java.en.*;
 
 import org.junit.jupiter.api.Assertions.*;
 
-public class StepDefinitions {
+public class StepDefinitions {    
 
-    @Given("an example scenario")
-    public void anExampleScenario() {
+
+// US 2.1
+    @When("The browser is on the home page")
+    public void theBrowserIsOnTheHomePage() {
+        // 
+
+
+        throw new io.cucumber.java.PendingException();
     }
 
-    @When("all step definitions are implemented")
-    public void allStepDefinitionsAreImplemented() {
-    }
+    @Then("The default level is \"Easy\"")
+    public void theDefaultLevelIsEasy() {
 
-    @Then("the scenario passes")
-    public void theScenarioPasses() {
+        throw new io.cucumber.java.PendingException();
     }
 
 }
