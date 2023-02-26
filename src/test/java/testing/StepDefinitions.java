@@ -2,24 +2,54 @@ package testing;
 
 import io.cucumber.java.en.*;
 
-import org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StepDefinitions {    
+import java.util.logging.Logger;
+import testing.util.CypressSpec;
+import testing.util.Ext;
 
+
+public class StepDefinitions { 
+    public StepDefinitions() {
+        Ext.US2_1.put("Chrome", Ext.US2_1_A_CHROME);
+        Ext.US2_1.put("Chromium", Ext.US2_1_B_CHROMIUM);
+    }
+
+    Logger LOGGER = Logger.getLogger(StepDefinitions.class.getName());
 
 // US 2.1
-    @When("The browser is on the home page")
-    public void theBrowserIsOnTheHomePage() {
-        // 
-
-
-        throw new io.cucumber.java.PendingException();
+@When("{string} is on the homepage")
+    public void is_on_the_homepage(String browser) {
+        System.out.println("browser: "+browser);
+        String batchFileName = Ext.US2_1.get(browser);
+        System.out.println("batchFileName: "+batchFileName);
+        System.out.println(Ext.US2_1);
+        boolean containsChrome = batchFileName.contains(browser);
+        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
+        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
+        assertTrue(containsChrome&&oneInstanceOfVisitAndOnHomePage);
+    }
+// US 2.1.a
+    @When("Chrome is on the homepage")
+    public void Chrome_is_on_the_homepage() 
+    {   
+        String batchFileName = Ext.US2_1_A_CHROME;
+        boolean containsChrome = batchFileName.contains("Chrome");
+        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
+        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
+        assertTrue(containsChrome&&oneInstanceOfVisitAndOnHomePage);
     }
 
-    @Then("The default level is \"Easy\"")
-    public void theDefaultLevelIsEasy() {
-
-        throw new io.cucumber.java.PendingException();
+    @Then("The default level is easy")
+    public void The_default_level_is_easy() {
+        assertTrue(CypressSpec.passed(Ext.US2_1_A_CHROME));  
     }
+
+    @Then("The default level is easy [{string}]")
+    public void The_default_level_is_easy(String browser) {
+        assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
+    }
+
+    
 
 }
