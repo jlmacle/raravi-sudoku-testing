@@ -17,3 +17,6 @@ cypress/videos/
 
 #Node
 node_modules/
+
+#Selenium
+z_webdriver/
