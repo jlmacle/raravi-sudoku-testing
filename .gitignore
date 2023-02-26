@@ -15,3 +15,8 @@ buildNumber.properties
 cypress/screenshots/
 cypress/videos/
 
+#Node
+node_modules/
+
+#Selenium
+z_webdriver/
