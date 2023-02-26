@@ -30,11 +30,6 @@ public class StepDefinitions {
         assertTrue(containsChrome&&oneInstanceOfVisitAndOnHomePage);
     }
 
-    @Then("The default level is easy")
-    public void The_default_level_is_easy() {
-        assertTrue(CypressSpec.passed(Ext.US2_1_A_CHROME));  
-    }
-
     @Then("The default level is easy [{string}]")
     public void The_default_level_is_easy(String browser) {
         assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
