@@ -3,6 +3,7 @@ and forked to this repository.<br><br>
 
 The e2e scripts are in the folder <b>zz_e2e_tests</b>.
 
-
+<u>Requirements</u>:<br>
+<code>npm install</code>
 
 
