@@ -1,0 +1,6 @@
+cd %CT_SUDOKU_APP_TESTING-SERVER_FOLDER%
+start npm start
+pause
+
+cd %CT_SUDOKU_APP_TESTING-TESTING_FOLDER%
+mvn test
