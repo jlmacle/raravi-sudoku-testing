@@ -21,7 +21,7 @@ public class CypressSpecTest
     @Test
     void getContentTest()
     {
-    	String expectedContent = "describe('US 2.1.a - Chrome - Level easy at startup', () => {\r\n"
+    	String expectedContent = "describe('US 2.1 - Level easy at startup', () => {\r\n"
     			+ "  it('passes', () => {\r\n"
     			+ "    cy.visit('/')\r\n"
     			+ "    cy.get('.status__difficulty-select').should('have.value', 'Easy')\r\n"

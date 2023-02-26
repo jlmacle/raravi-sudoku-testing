@@ -12,7 +12,7 @@ import testing.util.Ext;
 public class StepDefinitions { 
     public StepDefinitions() {
         Ext.US2_1.put("Chrome", Ext.US2_1_A_CHROME);
-        Ext.US2_1.put("Chromium", Ext.US2_1_B_CHROMIUM);
+        Ext.US2_1.put("Edge", Ext.US2_1_B_EDGE);
     }
 
     Logger LOGGER = Logger.getLogger(StepDefinitions.class.getName());
@@ -24,10 +24,10 @@ public class StepDefinitions {
         String batchFileName = Ext.US2_1.get(browser);
         System.out.println("batchFileName: "+batchFileName);
         System.out.println(Ext.US2_1);
-        boolean containsChrome = batchFileName.contains(browser);
+        boolean containsBrowserName = batchFileName.contains(browser);
         String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
         boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
-        assertTrue(containsChrome&&oneInstanceOfVisitAndOnHomePage);
+        assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
     }
 
     @Then("The default level is easy [{string}]")
