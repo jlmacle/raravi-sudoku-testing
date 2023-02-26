@@ -29,16 +29,6 @@ public class StepDefinitions {
         boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
         assertTrue(containsChrome&&oneInstanceOfVisitAndOnHomePage);
     }
-// US 2.1.a
-    @When("Chrome is on the homepage")
-    public void Chrome_is_on_the_homepage() 
-    {   
-        String batchFileName = Ext.US2_1_A_CHROME;
-        boolean containsChrome = batchFileName.contains("Chrome");
-        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
-        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
-        assertTrue(containsChrome&&oneInstanceOfVisitAndOnHomePage);
-    }
 
     @Then("The default level is easy")
     public void The_default_level_is_easy() {
