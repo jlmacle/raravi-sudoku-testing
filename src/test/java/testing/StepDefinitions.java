@@ -48,6 +48,7 @@ public class StepDefinitions {
     public void is_on_the_homepage_and_I_select_where_Easy_is(String browserName, String level) {
         Map mapRelatedToLevel = Ext.LEVELS.get(level);
         String batchFileName = ((Map<String,String>)mapRelatedToLevel).get(browserName);  
+        System.out.println("batchFileName: "+batchFileName);
         boolean browserisOnHomePageAndLevelIsSelected = false;
         boolean cypressRunOptionContainsBrowserName = batchFileName.contains(browserName);
         String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
