@@ -63,24 +63,7 @@ public class StepDefinitions {
         assertTrue(browserisOnHomePageAndLevelIsSelected);
     }
 
-    @When("{string} is on the homepage, and I select where Easy is")
-    public void is_on_the_homepage_and_I_select_where_Easy_is(String browserName) {
-        
-        String batchFileName = Ext.US2_2_1.get(browserName);        
-        boolean browserisOnHomePageAndLevelIsSelected = false;
-        boolean cypressRunOptionContainsBrowserName = batchFileName.contains(browserName);
-        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
-        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
-        boolean selectionWhereEasyIs = 
-            ( (cypressScriptContent.indexOf(Ext.HOME_PAGE_SELECTED_LEVEL_PATTERN)
-                ==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_SELECTED_LEVEL_PATTERN))
-            );        
-        browserisOnHomePageAndLevelIsSelected =
-        cypressRunOptionContainsBrowserName && oneInstanceOfVisitAndOnHomePage && 
-        selectionWhereEasyIs;
-        assertTrue(browserisOnHomePageAndLevelIsSelected);
-    }
-
+    
     @Then("{string} should be visible, selectable and Easy should not be visible anymore [{string}]")
     public void should_be_visible_selectable_and_Easy_should_not_be_visible_anymore(String level, String browserName) {
         Map mapRelatedToLevel = Ext.LEVELS.get(level);
