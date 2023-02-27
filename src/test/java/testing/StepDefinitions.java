@@ -44,6 +44,23 @@ public class StepDefinitions {
         assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
     }
 
+    @When("{string} is on the homepage, and I select where Easy is [{string}]")
+    public void is_on_the_homepage_and_I_select_where_Easy_is(String browserName, String level) {
+        Map mapRelatedToLevel = Ext.LEVELS.get(level);
+        String batchFileName = ((Map<String,String>)mapRelatedToLevel).get(browserName);  
+        boolean browserisOnHomePageAndLevelIsSelected = false;
+        boolean cypressRunOptionContainsBrowserName = batchFileName.contains(browserName);
+        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
+        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
+        boolean selectionWhereEasyIs = 
+            ( (cypressScriptContent.indexOf(Ext.HOME_PAGE_SELECTED_LEVEL_PATTERN)
+                ==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_SELECTED_LEVEL_PATTERN))
+            );        
+        browserisOnHomePageAndLevelIsSelected =
+        cypressRunOptionContainsBrowserName && oneInstanceOfVisitAndOnHomePage && 
+        selectionWhereEasyIs;
+        assertTrue(browserisOnHomePageAndLevelIsSelected);
+    }
 
     @When("{string} is on the homepage, and I select where Easy is")
     public void is_on_the_homepage_and_I_select_where_Easy_is(String browserName) {
@@ -69,6 +86,8 @@ public class StepDefinitions {
         String batchFileName = ((Map<String,String>)mapRelatedToLevel).get(browserName);
         assertTrue(CypressSpec.passed(batchFileName));
     }
+
+    
 
     
 
