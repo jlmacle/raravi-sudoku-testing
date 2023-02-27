@@ -17,11 +17,13 @@ public class Ext
     // Homepage visit pattern
     public static final String HOME_PAGE_VISIT_PATTERN = "cy.visit('/')";
     
+    public static final String HOME_PAGE_SELECTED_LEVEL_PATTERN = "cy.get('.status__difficulty-select').select(";
     // Cypress spec success pattern
     public static final String CYPRESS_SPEC_SUCCESS_PATTERN = "All specs passed!";
 
     //US 2.1:
     public static final Map<String,String> US2_1 = new HashMap<>();
+    public static final Map<String,String> US2_2 = new HashMap<>();
     public static final String LEVELS_SCRIPT_FOLDER = "2.Levels/";
     public static final String US2_1_A_CHROME = LEVELS_SCRIPT_FOLDER+"US2.1.a-Chrome-Level-easy-at-startup.bat";
     public static final String US2_1_B_EDGE = LEVELS_SCRIPT_FOLDER+"US2.1.b-Edge-Level-easy-at-startup.bat";
