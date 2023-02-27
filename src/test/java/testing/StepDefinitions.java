@@ -13,6 +13,7 @@ public class StepDefinitions {
     public StepDefinitions() {
         Ext.US2_1.put("Chrome", Ext.US2_1_A_CHROME);
         Ext.US2_1.put("Edge", Ext.US2_1_B_EDGE);
+        Ext.US2_1.put("Edge", Ext.US2_2_1_A_EDGE);
     }
 
     Logger LOGGER = Logger.getLogger(StepDefinitions.class.getName());
@@ -34,6 +35,16 @@ public class StepDefinitions {
     public void The_default_level_is_easy(String browser) {
         assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
     }
+
+    // @Then("{string} should be visible, selectable and Easy should not be visible anymore")
+    // public void should_be_visible_selectable_and_Easy_should_not_be_visible_anymore(String s) {
+    //     // Write code here that turns the phrase above into concrete actions
+    // }
+
+    // @When("I click on the level {string}")
+    // public void I_click_on_the_level(String s) {
+    //     // Write code here that turns the phrase above into concrete actions
+    // }
 
     
 
