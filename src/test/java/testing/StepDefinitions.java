@@ -4,7 +4,9 @@ import io.cucumber.java.en.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import testing.util.CypressSpec;
 import testing.util.Ext;
 
@@ -13,10 +15,11 @@ public class StepDefinitions {
     public StepDefinitions() {
         Ext.US2_1.put("Chrome", Ext.US2_1_A_CHROME);
         Ext.US2_1.put("Edge", Ext.US2_1_B_EDGE);
-        Ext.US2_1.put("Edge", Ext.US2_2_1_A_EDGE);
+        Ext.US2_2.put("Edge", Ext.US2_2_1_A_EDGE);
     }
 
-    Logger LOGGER = Logger.getLogger(StepDefinitions.class.getName());
+    static Logger logger = LogManager.getLogger(StepDefinitions.class);
+
 
 // US 2.1
 @When("{string} is on the homepage")
@@ -35,7 +38,23 @@ public class StepDefinitions {
 
     @When("{string} is on the homepage, and I click on the level {string}")
     public void is_on_the_homepage_and_I_click_on_the_level(String browserName, String selectedLevel) {
-        String batchFileName = Ext.US2_1.get(browserName);
+        String batchFileName = Ext.US2_2.get(browserName);        
+        boolean browserisOnHomePageAndLevelIsSelected = false;
+        boolean cypressRunOptionContainsBrowserName = batchFileName.contains(browserName);
+        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
+        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
+        boolean oneInstanceOfSelectedLevelAndSelectedLevelIsCorrect = 
+            ( (cypressScriptContent.indexOf(Ext.HOME_PAGE_SELECTED_LEVEL_PATTERN)
+                ==cypressScriptContent.lastIndexOf(cypressScriptContent))
+            ) &&
+            ( cypressScriptContent.contains(Ext.HOME_PAGE_SELECTED_LEVEL_PATTERN+selectedLevel) );
+        System.out.println(String.format("oneInstanceOfSelectedLevelAndSelectedLevelIsCorrect=%s", oneInstanceOfSelectedLevelAndSelectedLevelIsCorrect));
+        System.out.println(String.format("cypressRunOptionContainsBrowserName=%s", cypressRunOptionContainsBrowserName));
+        System.out.println(String.format("oneInstanceOfVisitAndOnHomePage=%s", oneInstanceOfVisitAndOnHomePage));
+        browserisOnHomePageAndLevelIsSelected =
+        cypressRunOptionContainsBrowserName && oneInstanceOfVisitAndOnHomePage && 
+        oneInstanceOfSelectedLevelAndSelectedLevelIsCorrect;
+        assertTrue(browserisOnHomePageAndLevelIsSelected);
     }
 
     @Then("{string} should be visible, selectable and Easy should not be visible anymore")
@@ -43,7 +62,6 @@ public class StepDefinitions {
         // Write code here that turns the phrase above into concrete actions
     }
 
-    
 
     
 
