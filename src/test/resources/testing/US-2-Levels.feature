@@ -8,9 +8,9 @@ Feature: 3 levels of difficulty : Easy, Medium and Hard
         When "Edge" is on the homepage
         Then The default level is easy ["Edge"]
        
-    # Scenario: US 2.2-1: Levels: When clicking on "Easy", "Medium" should be visible, selectable and "Easy" should not be visible anymore [Edge]
-    #     When "Edge" is on the homepage, and I select where Easy is
-    #     Then "Medium" should be visible, selectable and Easy should not be visible anymore
+    Scenario: US 2.2-1-a: Levels: When clicking on "Easy", "Medium" should be visible, selectable and "Easy" should not be visible anymore [Edge]
+        When "Edge" is on the homepage, and I select where Easy is
+        Then "Medium" should be visible, selectable and Easy should not be visible anymore ["Edge"]
         
 
     
