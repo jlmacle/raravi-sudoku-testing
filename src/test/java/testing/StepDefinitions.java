@@ -21,6 +21,9 @@ public class StepDefinitions {
         Ext.US2_1.put("Edge", Ext.US2_1_B_EDGE);
         Ext.US2_2_1.put("Edge", Ext.US2_2_1_A_EDGE);
         Ext.US2_2_1.put("Chrome", Ext.US2_2_1_B_CHROME);
+        Ext.US2_2_2.put("Edge", Ext.US2_2_2_A_EDGE);
+        Ext.US2_2_2.put("Firefox", Ext.US2_2_2_B_FIREFOX);
+
     }
 
     static Logger logger = LogManager.getLogger(StepDefinitions.class);
