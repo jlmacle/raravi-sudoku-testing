@@ -13,6 +13,7 @@ public class StepDefinitions {
     public StepDefinitions() {
         Ext.US2_1.put("Chrome", Ext.US2_1_A_CHROME);
         Ext.US2_1.put("Edge", Ext.US2_1_B_EDGE);
+        Ext.US2_1.put("Edge", Ext.US2_2_1_A);
     }
 
     Logger LOGGER = Logger.getLogger(StepDefinitions.class.getName());
