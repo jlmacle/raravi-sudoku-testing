@@ -21,5 +21,5 @@ Feature: 3 levels of difficulty : Easy, Medium and Hard
     #     Then "Medium" should be visible, selectable and Easy should not be visible anymore ["Edge"]  
 
     Scenario: US 2.2-2-b: Levels: When clicking on "Easy", "Medium" should be visible, selectable and "Easy" should not be visible anymore [Firefox]
-        When "Firefox" is on the homepage, and I select where Easy is
+        When "Firefox" is on the homepage, and I select where Easy is ["Medium"]
         Then "Medium" should be visible, selectable and Easy should not be visible anymore ["Firefox"]  
