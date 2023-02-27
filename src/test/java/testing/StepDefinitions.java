@@ -4,6 +4,8 @@ import io.cucumber.java.en.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Map;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -13,9 +15,11 @@ import testing.util.Ext;
 
 public class StepDefinitions { 
     public StepDefinitions() {
+        Ext.LEVELS.put("Medium", Ext.US2_2_1);
+        Ext.LEVELS.put("Hard", Ext.US2_2_2);
         Ext.US2_1.put("Chrome", Ext.US2_1_A_CHROME);
         Ext.US2_1.put("Edge", Ext.US2_1_B_EDGE);
-        Ext.US2_2.put("Edge", Ext.US2_2_1_A_EDGE);
+        Ext.US2_2_1.put("Edge", Ext.US2_2_1_A_EDGE);
     }
 
     static Logger logger = LogManager.getLogger(StepDefinitions.class);
@@ -40,7 +44,7 @@ public class StepDefinitions {
     @When("{string} is on the homepage, and I select where Easy is")
     public void is_on_the_homepage_and_I_select_where_Easy_is(String browserName) {
         
-        String batchFileName = Ext.US2_2.get(browserName);        
+        String batchFileName = Ext.US2_2_1.get(browserName);        
         boolean browserisOnHomePageAndLevelIsSelected = false;
         boolean cypressRunOptionContainsBrowserName = batchFileName.contains(browserName);
         String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
@@ -55,9 +59,11 @@ public class StepDefinitions {
         assertTrue(browserisOnHomePageAndLevelIsSelected);
     }
 
-    @Then("{string} should be visible, selectable and Easy should not be visible anymore")
-    public void should_be_visible_selectable_and_Easy_should_not_be_visible_anymore(String s) {
-        // Write code here that turns the phrase above into concrete actions
+    @Then("{string} should be visible, selectable and Easy should not be visible anymore [{string}]")
+    public void should_be_visible_selectable_and_Easy_should_not_be_visible_anymore(String level, String browserName) {
+        Map mapRelatedToLevel = Ext.LEVELS.get(level);
+        String batchFileName = ((Map<String,String>)mapRelatedToLevel).get(browserName);
+        assertTrue(CypressSpec.passed(batchFileName));
     }
 
     
