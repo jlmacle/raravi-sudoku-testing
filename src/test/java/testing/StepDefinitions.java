@@ -141,8 +141,15 @@ public class StepDefinitions {
         assertTrue(CypressSpec.passed(batchFileName));
     }
 
+
+    // Misc. cases
     @Then("The port number is {int} [{string}]")
     public void The_port_number_is(int i, String s) {
+        // Write code here that turns the phrase above into concrete actions
+    }
+
+    @Then("Sudoku is on the page")
+    public void Sudoku_is_on_the_page() {
         // Write code here that turns the phrase above into concrete actions
     }
 
