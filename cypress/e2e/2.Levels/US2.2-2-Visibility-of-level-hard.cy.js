@@ -1,4 +1,4 @@
-describe('US 2.2 - Access to level Hard can be found', () => {
+describe('US 2.2-2 - Access to level Hard can be found', () => {
   it('passes', () => {
     cy.visit('/')
     // When clicking on Easy, "Medium" should be visible, selectable and "Medium" should be visible instead of Easy
