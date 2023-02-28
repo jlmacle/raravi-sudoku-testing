@@ -20,5 +20,5 @@ cypress/downloads/
 node_modules/
 
 #Selenium
-z_webdriver/
+z_webdrivers/
 
