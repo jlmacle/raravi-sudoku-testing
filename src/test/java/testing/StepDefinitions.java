@@ -48,15 +48,16 @@ public class StepDefinitions {
     public void is_on_the_homepage(String browser) {
         String batchFileName = Ext.US2_1.get(browser);
         boolean containsBrowserName = batchFileName.contains(browser);
+        System.out.println("batchFileName :"+batchFileName);
         String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
         boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
         assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
     }
 
-// US 0.1
+
     @Then("The default level is easy [{string}]")
     public void The_default_level_is_easy(String browser) {
-        assertTrue(CypressSpec.passed(Ext.US0.get(browser))); 
+        assertTrue(CypressSpec.passed(Ext.US2_2_1.get(browser))); 
     }
 
 // 2nd implementation of US 2.1 using Selenium
