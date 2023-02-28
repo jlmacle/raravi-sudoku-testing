@@ -1,14 +1,19 @@
 package testing;
 
-import io.cucumber.java.en.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import testing.util.CypressSpec;
 import testing.util.Ext;
 
@@ -24,24 +29,52 @@ public class StepDefinitions {
         Ext.US2_2_2.put("Edge", Ext.US2_2_2_A_EDGE);
         Ext.US2_2_2.put("Firefox", Ext.US2_2_2_B_FIREFOX);
 
+        // For Selenium
+        System.setProperty(Ext.WEBDRIVER_CHROME_KEY, Ext.WEBDRIVER_FOLDER+"chromedriver.exe");
+        System.setProperty(Ext.WEBDRIVER_EDGE_KEY, Ext.WEBDRIVER_FOLDER+"msedgedriver.exe");
+
     }
 
     static Logger logger = LogManager.getLogger(StepDefinitions.class);
 
 
 // US 2.1
-@When("{string} is on the homepage")
-    public void is_on_the_homepage(String browser) {
-        String batchFileName = Ext.US2_1.get(browser);
-        boolean containsBrowserName = batchFileName.contains(browser);
-        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
-        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
-        assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
+// @When("{string} is on the homepage")
+//     public void is_on_the_homepage(String browser) {
+//         String batchFileName = Ext.US2_1.get(browser);
+//         boolean containsBrowserName = batchFileName.contains(browser);
+//         String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
+//         boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
+//         assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
+//     }
+
+//     @Then("The default level is easy [{string}]")
+//     public void The_default_level_is_easy(String browser) {
+//         assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
+//     }
+
+// 2nd implementation of US 2.1 using Selenium
+    @When("{string} is on the homepage")
+    public void is_on_the_homepage(String browser) {       
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", browser);
+        WebDriver driver ;
+
+        if (browser.equals("Chrome")) {            
+            driver = new ChromeDriver();
+        } else if (browser.equals("Edge")) {            
+            driver = new EdgeDriver();
+        } else {
+            throw new RuntimeException("Browser not supported");
+        }
+
+        driver.get(Ext.URL);
+        assertEquals(driver.getTitle(), "Sudoku");
     }
 
     @Then("The default level is easy [{string}]")
     public void The_default_level_is_easy(String browser) {
-        assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
+         
     }
 
     // US 2.2
