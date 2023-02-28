@@ -32,6 +32,7 @@ public class StepDefinitions {
         Ext.US2_2_1.put("Chrome", Ext.US2_2_1_B_CHROME);
         Ext.US2_2_2.put("Edge", Ext.US2_2_2_A_EDGE);
         Ext.US2_2_2.put("Firefox", Ext.US2_2_2_B_FIREFOX);
+        Ext.US0.put("Chrome",Ext.US0_CHROME);
 
         // For Selenium
         System.setProperty(Ext.WEBDRIVER_CHROME_KEY, Ext.WEBDRIVER_FOLDER+"chromedriver.exe");
@@ -47,14 +48,16 @@ public class StepDefinitions {
     public void is_on_the_homepage(String browser) {
         String batchFileName = Ext.US2_1.get(browser);
         boolean containsBrowserName = batchFileName.contains(browser);
+        System.out.println("batchFileName :"+batchFileName);
         String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
         boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
         assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
     }
 
+
     @Then("The default level is easy [{string}]")
     public void The_default_level_is_easy(String browser) {
-        assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
+        assertTrue(CypressSpec.passed(Ext.US2_2_1.get(browser))); 
     }
 
 // 2nd implementation of US 2.1 using Selenium
@@ -138,7 +141,12 @@ public class StepDefinitions {
         assertTrue(CypressSpec.passed(batchFileName));
     }
 
-    // TODO: release webdriver instances
+    @Then("The port number is {int} [{string}]")
+    public void The_port_number_is(int i, String s) {
+        // Write code here that turns the phrase above into concrete actions
+    }
+
+    
 
     
 
