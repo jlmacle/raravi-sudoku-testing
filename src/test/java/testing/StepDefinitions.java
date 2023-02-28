@@ -3,11 +3,14 @@ package testing;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -74,7 +77,22 @@ public class StepDefinitions {
 
     @Then("The default level is easy [{string}]")
     public void The_default_level_is_easy(String browser) {
-         
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", browser);
+        WebDriver driver ;
+        if (browser.equals("Chrome")) {            
+            driver = new ChromeDriver();
+        } else if (browser.equals("Edge")) {            
+            driver = new EdgeDriver();
+        } else {
+            throw new RuntimeException("Browser not supported");
+        }
+
+        driver.get(Ext.URL);
+        // TODO : ".status__difficulty-select" should have the value "Easy"
+        List<WebElement> dropdownElements = driver.findElements(By.className(".status__difficulty-select-select"));
+        //.getText().equals("Easy");
+
     }
 
     // US 2.2
