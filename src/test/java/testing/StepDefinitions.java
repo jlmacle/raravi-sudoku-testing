@@ -44,6 +44,7 @@ public class StepDefinitions {
         assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
     }
 
+    // US 2.2
     @When("{string} is on the homepage, and I select where Easy is [{string}]")
     public void is_on_the_homepage_and_I_select_where_Easy_is(String browserName, String level) {
         Map mapRelatedToLevel = Ext.LEVELS.get(level);
