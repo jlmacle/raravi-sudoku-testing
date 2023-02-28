@@ -23,3 +23,7 @@ Feature: 3 levels of difficulty : Easy, Medium and Hard
     Scenario: US 2.2-2-b: Levels: When clicking on "Easy", "Hard" should be visible, selectable and "Easy" should not be visible anymore [Firefox]
         When "Firefox" is on the homepage, and I select where Easy is ["Hard"]
         Then "Hard" should be visible, selectable and Easy should not be visible anymore ["Firefox"]  
+
+    Scenario: 0-1: 3000 in the port number
+        When "Chrome" is on the homepage
+        Then The port number is 3000 ["Chrome"]
