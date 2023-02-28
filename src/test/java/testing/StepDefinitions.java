@@ -22,6 +22,7 @@ import testing.util.Ext;
 
 
 public class StepDefinitions { 
+    WebDriver driver;
     public StepDefinitions() {
         Ext.LEVELS.put("Medium", Ext.US2_2_1);
         Ext.LEVELS.put("Hard", Ext.US2_2_2);
@@ -42,58 +43,72 @@ public class StepDefinitions {
 
 
 // US 2.1
-// @When("{string} is on the homepage")
-//     public void is_on_the_homepage(String browser) {
-//         String batchFileName = Ext.US2_1.get(browser);
-//         boolean containsBrowserName = batchFileName.contains(browser);
-//         String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
-//         boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
-//         assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
-//     }
-
-//     @Then("The default level is easy [{string}]")
-//     public void The_default_level_is_easy(String browser) {
-//         assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
-//     }
-
-// 2nd implementation of US 2.1 using Selenium
-    @When("{string} is on the homepage")
-    public void is_on_the_homepage(String browser) {       
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", browser);
-        WebDriver driver ;
-
-        if (browser.equals("Chrome")) {            
-            driver = new ChromeDriver();
-        } else if (browser.equals("Edge")) {            
-            driver = new EdgeDriver();
-        } else {
-            throw new RuntimeException("Browser not supported");
-        }
-
-        driver.get(Ext.URL);
-        assertEquals(driver.getTitle(), "Sudoku");
+@When("{string} is on the homepage")
+    public void is_on_the_homepage(String browser) {
+        String batchFileName = Ext.US2_1.get(browser);
+        boolean containsBrowserName = batchFileName.contains(browser);
+        String cypressScriptContent = CypressSpec.getCypressSpecContent(batchFileName);
+        boolean oneInstanceOfVisitAndOnHomePage = (cypressScriptContent.indexOf(Ext.HOME_PAGE_VISIT_PATTERN)==cypressScriptContent.lastIndexOf(Ext.HOME_PAGE_VISIT_PATTERN));
+        assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
     }
 
     @Then("The default level is easy [{string}]")
     public void The_default_level_is_easy(String browser) {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", browser);
-        WebDriver driver ;
-        if (browser.equals("Chrome")) {            
-            driver = new ChromeDriver();
-        } else if (browser.equals("Edge")) {            
-            driver = new EdgeDriver();
-        } else {
-            throw new RuntimeException("Browser not supported");
-        }
-
-        driver.get(Ext.URL);
-        // TODO : ".status__difficulty-select" should have the value "Easy"
-        List<WebElement> dropdownElements = driver.findElements(By.className(".status__difficulty-select-select"));
-        //.getText().equals("Easy");
-
+        assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
     }
+
+// 2nd implementation of US 2.1 using Selenium
+    // @When("{string} is on the homepage")
+    // public void is_on_the_homepage(String browser) {       
+    //     DesiredCapabilities capabilities = new DesiredCapabilities();
+    //     capabilities.setCapability("browserName", browser);
+        
+    //     if (driver != null) {
+    //         driver.quit();
+    //     }
+
+    //     if (browser.equals("Chrome")) {            
+    //         driver = new ChromeDriver();
+    //     } else if (browser.equals("Edge")) {            
+    //         driver = new EdgeDriver();
+    //     } else {
+    //         throw new RuntimeException("Browser not supported");
+    //     }
+
+    //     driver.get(Ext.URL);
+    //     assertEquals(driver.getTitle(), "Sudoku");
+    // }
+
+    // @Then("The default level is easy [{string}]")
+    // public void The_default_level_is_easy(String browser) {
+    //     DesiredCapabilities capabilities = new DesiredCapabilities();
+    //     capabilities.setCapability("browserName", browser);
+        
+    //     if (driver != null) {
+    //         driver.quit();
+    //     }
+
+    //     if (browser.equals("Chrome")) {            
+    //         driver = new ChromeDriver();
+    //     } else if (browser.equals("Edge")) {            
+    //         driver = new EdgeDriver();
+    //     } else {
+    //         throw new RuntimeException("Browser not supported");
+    //     }
+
+    //     driver.get(Ext.URL);
+
+    //     List<WebElement> dropdownElements = driver.findElements(By.className("status__difficulty-select-select"));
+    //     String elementText = null;
+    //     for (WebElement element : dropdownElements) {
+    //          if (dropdownElements.size()==1)
+    //          {elementText = element.getText();}
+            
+    //     }
+    //     assertEquals(elementText, "Easy");
+        
+
+    // }
 
     // US 2.2
     @When("{string} is on the homepage, and I select where Easy is [{string}]")
@@ -122,6 +137,8 @@ public class StepDefinitions {
         String batchFileName = ((Map<String,String>)mapRelatedToLevel).get(browserName);
         assertTrue(CypressSpec.passed(batchFileName));
     }
+
+    // TODO: release webdriver instances
 
     
 
