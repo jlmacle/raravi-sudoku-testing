@@ -1,0 +1,1 @@
+npx cypress run -b chrome --config screenshotOnRunFailure=false,video=false --spec "./cypress/e2e/0.Misc/0.2-Sudoku-on-page.cy.js"
