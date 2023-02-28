@@ -153,6 +153,11 @@ public class StepDefinitions {
         // Write code here that turns the phrase above into concrete actions
     }
 
+    @Then("New game is on the page")
+    public void New_game_is_on_the_page() {
+        // Write code here that turns the phrase above into concrete actions
+    }
+
     
 
     
