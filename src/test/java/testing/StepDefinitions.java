@@ -32,6 +32,7 @@ public class StepDefinitions {
         Ext.US2_2_1.put("Chrome", Ext.US2_2_1_B_CHROME);
         Ext.US2_2_2.put("Edge", Ext.US2_2_2_A_EDGE);
         Ext.US2_2_2.put("Firefox", Ext.US2_2_2_B_FIREFOX);
+        Ext.US0.put("Chrome",Ext.US0_CHROME);
 
         // For Selenium
         System.setProperty(Ext.WEBDRIVER_CHROME_KEY, Ext.WEBDRIVER_FOLDER+"chromedriver.exe");
@@ -52,9 +53,10 @@ public class StepDefinitions {
         assertTrue(containsBrowserName&&oneInstanceOfVisitAndOnHomePage);
     }
 
+// US 0.1
     @Then("The default level is easy [{string}]")
     public void The_default_level_is_easy(String browser) {
-        assertTrue(CypressSpec.passed(Ext.US2_1.get(browser))); 
+        assertTrue(CypressSpec.passed(Ext.US0.get(browser))); 
     }
 
 // 2nd implementation of US 2.1 using Selenium
