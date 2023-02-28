@@ -11,6 +11,10 @@ public class Ext
     // Website URL:
     public static final String URL = "http://localhost:3000/";
 
+    /************************************************************/
+    /* About Cypress */
+    /************************************************************/
+
     // E2e Cypress batch folder path
     public static final String ENV_E2E_CYPRESS_BATCH_FOLDER = "CT_SUDOKU_APP_TESTING-E2E_CYPRESS_BATCH_FILES";
 
@@ -20,6 +24,13 @@ public class Ext
     public static final String HOME_PAGE_SELECTED_LEVEL_PATTERN = "cy.get('.status__difficulty-select').select(";
     // Cypress spec success pattern
     public static final String CYPRESS_SPEC_SUCCESS_PATTERN = "All specs passed!";
+
+    /************************************************************/
+    /* About Selenium */
+    /************************************************************/
+    public static final String WEBDRIVER_FOLDER = "./z_webdrivers/";
+    public static final String WEBDRIVER_CHROME_KEY = "webdriver.chrome.driver";
+    public static final String WEBDRIVER_EDGE_KEY = "webdriver.edge.driver";
 
     //US 2.1:
     public static final Map<String,String> US2_1 = new HashMap<>();
