@@ -1,1 +1,0 @@
-npx cypress run -b chrome --config screenshotOnRunFailure=false,video=false --spec "./cypress/e2e/0.Misc/0.1-Port-number.cy.js"

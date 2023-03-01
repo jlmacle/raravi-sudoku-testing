@@ -47,8 +47,6 @@ public class Ext
     public static final String US2_2_2_B_FIREFOX = LEVELS_SCRIPT_FOLDER+"US2.2-2.b-Firefox-Visibility-of-level-hard.bat";
     public static final String THE_BROWSER_IS_ON_THE_HOME_PAGE = "The browser is on the home page";
     public static final String THE_DEFAULT_LEVEL_IS_EASY = "The default level is \"Easy\"";
-    public static final String MISC_SCRIPT_FOLDER = "0.Misc/";
-    public static final String US0_CHROME = MISC_SCRIPT_FOLDER+"0.1-Chrome-Port-number.bat";
-
+    
     
 }
