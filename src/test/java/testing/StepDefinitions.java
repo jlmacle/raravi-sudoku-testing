@@ -32,7 +32,7 @@ public class StepDefinitions {
         Ext.US2_2_1.put("Chrome", Ext.US2_2_1_B_CHROME);
         Ext.US2_2_2.put("Edge", Ext.US2_2_2_A_EDGE);
         Ext.US2_2_2.put("Firefox", Ext.US2_2_2_B_FIREFOX);
-        Ext.US0.put("Chrome",Ext.US0_CHROME);
+       
 
         // For Selenium
         System.setProperty(Ext.WEBDRIVER_CHROME_KEY, Ext.WEBDRIVER_FOLDER+"chromedriver.exe");
@@ -140,31 +140,5 @@ public class StepDefinitions {
         String batchFileName = ((Map<String,String>)mapRelatedToLevel).get(browserName);
         assertTrue(CypressSpec.passed(batchFileName));
     }
-
-
-    // Misc. cases
-    @Then("The port number is {int} [{string}]")
-    public void The_port_number_is(int i, String s) {
-        // Write code here that turns the phrase above into concrete actions
-    }
-
-    @Then("Sudoku is on the page")
-    public void Sudoku_is_on_the_page() {
-        // Write code here that turns the phrase above into concrete actions
-    }
-
-    @Then("New game is on the page")
-    public void New_game_is_on_the_page() {
-        // Write code here that turns the phrase above into concrete actions
-    }
-
-    
-
-    
-
-    
-
-
-    
 
 }
