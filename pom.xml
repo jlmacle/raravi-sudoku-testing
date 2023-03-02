@@ -35,7 +35,7 @@
     </dependencyManagement>
 
     <dependencies>
-    <!-- Installed by cucubmber-archetype : begin -->
+        <!-- Installed by cucubmber-archetype : begin -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -59,13 +59,7 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
-    <!-- Installed by cucubmber-archetype : end -->    
-    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>4.8.1</version>
-    </dependency>
+        <!-- Installed by cucubmber-archetype : end -->  
      
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
